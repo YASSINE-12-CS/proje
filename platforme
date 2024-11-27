@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plateforme E-Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-title h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #FFD700;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .course {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        .course:hover {
+            transform: scale(1.03);
+        }
+        .course img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+        .course h3 {
+            margin: 0;
+            color: #007BFF;
+        }
+        .course p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        .content {
+            display: none;
+        }
+        .content h2 {
+            color: #007BFF;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-btn:hover {
+            background: #0056b3;
+        }
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Logo Plateforme">
+            <h1>Plateforme E-Learning</h1>
+        </div>
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">Cours</a>
+            <a href="#">À propos</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="courseList" class="course-list">
+            <div class="course" onclick="showContent('course1')">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML Logo">
+                <div>
+                    <h3>HTML pour les Débutants</h3>
+                    <p>Apprenez les bases du HTML pour créer des pages web simples.</p>
+                </div>
+            </div>
+            <div class="course" onclick="showContent('course2')">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS Logo">
+                <div>
+                    <h3>CSS pour le Style</h3>
+                    <p>Découvrez comment styliser vos pages web avec CSS.</p>
+                </div>
+            </div>
+            <div class="course" onclick="showContent('course3')">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript Logo">
+                <div>
+                    <h3>JavaScript Interactif</h3>
+                    <p>Ajoutez de l'interactivité à vos sites web avec JavaScript.</p>
+                </div>
+            </div>
+        </div>
+        <div id="courseContent" class="content">
+            <h2 id="contentTitle"></h2>
+            <p id="contentDescription"></p>
+            <a href="#" class="back-btn" onclick="goBack()">Retour aux cours</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Plateforme E-Learning</p>
+    </footer>
+    <script>
+        const courses = {
+    course1: {
+        title: "HTML pour les Débutants",
+        description: "Ce cours couvre les bases du HTML, y compris les balises, les attributs et la structure d'une page web."
+    },
+    course2: {
+        title: "CSS pour le Style",
+        description: "Apprenez à styliser vos pages avec CSS : couleurs, polices, mise en page et animations."
+    },
+    course3: {
+        title: "JavaScript Interactif",
+        description: "Ajoutez des fonctionnalités dynamiques et interactivité à vos sites web grâce à JavaScript."
+    }
+};
+
+
+function showContent(courseId) {
+    const course = courses[courseId];
+    if (course) {
+        document.getElementById("courseList").style.display = "none";
+        document.getElementById("courseContent").style.display = "block";
+
+        document.getElementById("contentTitle").textContent = course.title;
+        document.getElementById("contentDescription").textContent = course.description;
+    }
+}
+
+
+function goBack() {
+    document.getElementById("courseList").style.display = "flex";
+    document.getElementById("courseContent").style.display = "none";
+}
+    </script>
+</body>
+</html>
